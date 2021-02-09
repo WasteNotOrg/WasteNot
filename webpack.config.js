@@ -4,7 +4,7 @@ module.exports = {
   mode: 'development',
   entry: './client/index.js',
   output: {
-    path: path.resolve(__dirname, 'client/dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   module: {
@@ -37,6 +37,10 @@ module.exports = {
     ]
   },
   devServer: {
+    publicPath: '/',
+    proxy: {
+      '/': 'http://localhost:3000',
+    },
     contentBase: path.resolve(__dirname, 'client'),
     historyApiFallback: true, 
   }
