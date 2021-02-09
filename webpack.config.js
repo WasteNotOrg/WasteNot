@@ -4,8 +4,8 @@ module.exports = {
   mode: 'development',
   entry: './client/index.js',
   output: {
-    path: path.resolve(__dirname, 'client/dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -17,13 +17,13 @@ module.exports = {
           options: {
             presets: [
               '@babel/preset-env',
-              '@babel/preset-react'
+              '@babel/preset-react',
             ],
             plugins: [
-              '@babel/transform-runtime'
-            ]
-          }
-        }
+              '@babel/transform-runtime',
+            ],
+          },
+        },
       },
       {
         // /\.css$ /,
@@ -31,13 +31,17 @@ module.exports = {
         // exclude: /node_modules/,
         use: [
           'style-loader',
-          'css-loader'
-        ]
+          'css-loader',
+        ],
       },
-    ]
+    ],
   },
   devServer: {
+    publicPath: '/',
+    proxy: {
+      '/': 'http://localhost:3000',
+    },
     contentBase: path.resolve(__dirname, 'client'),
     historyApiFallback: true, 
-  }
+  },
 }
