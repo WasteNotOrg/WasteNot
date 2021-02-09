@@ -5,7 +5,7 @@ module.exports = {
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -17,13 +17,13 @@ module.exports = {
           options: {
             presets: [
               '@babel/preset-env',
-              '@babel/preset-react'
+              '@babel/preset-react',
             ],
             plugins: [
-              '@babel/transform-runtime'
-            ]
-          }
-        }
+              '@babel/transform-runtime',
+            ],
+          },
+        },
       },
       {
         // /\.css$ /,
@@ -31,10 +31,10 @@ module.exports = {
         // exclude: /node_modules/,
         use: [
           'style-loader',
-          'css-loader'
-        ]
+          'css-loader',
+        ],
       },
-    ]
+    ],
   },
   devServer: {
     publicPath: '/',
@@ -43,5 +43,5 @@ module.exports = {
     },
     contentBase: path.resolve(__dirname, 'client'),
     historyApiFallback: true, 
-  }
+  },
 }
