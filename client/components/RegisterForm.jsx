@@ -43,7 +43,7 @@ const RegisterForm = () => {
           <Form.Check inline type="checkbox" label="Perishable" />
         </Form.Group>
         <Form.Group id="formGridCheckbox">
-          <Form.Check inline type="checkbox" label="Dryed Goods" />
+          <Form.Check inline type="checkbox" label="Dried Goods" />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
