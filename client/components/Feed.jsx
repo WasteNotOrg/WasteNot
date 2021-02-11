@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Card, Accordion, Button } from "react-bootstrap";
-import { FeedContext } from '../providers/FeedProvider';
+import React, { useState, useEffect, useContext } from 'react';
+import { Card, Accordion, Button } from 'react-bootstrap';
+import { FeedContext } from '../providers/FeedProvider.jsx';
 
-const Feed = (props) => {
+const Feed = () => {
   // GLOBAL STATE
   const { isDonating } = useContext(FeedContext);
 
@@ -12,11 +12,11 @@ const Feed = (props) => {
 
   useEffect(() => {
     setInitialCallMade(true);
-    fetch("http://localhost:8080/feed")
+    fetch('http://localhost:8080/feed')
       .then((res) => res.json())
       .then((data) => {
         setFeedCards(data);
-        console.log("Feedcards:", feedCards);
+        console.log('Feedcards:', feedCards);
       })
       .catch((err) => {
         throw new Error(err);
@@ -24,7 +24,7 @@ const Feed = (props) => {
   }, [initialCallMade]);
 
   const renderedFeedCards = feedCards.map((card, idx) => (
-    <Card key={idx}>
+    <Card key={`card-${idx}`}>
       <Card.Header>
         <Accordion.Toggle as={Button} variant="link" eventKey={idx}>
           {card.name}
