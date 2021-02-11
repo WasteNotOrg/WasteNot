@@ -16,7 +16,7 @@ body, html {
 }
 
 body {
-  background-color: #ffd5c2;
+  background-color: black;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -44,8 +44,8 @@ form {
   border-style: double;
   border-width: 10px;
   border-radius: 5rem;
-  margin: 30px;
-  padding: 30px;
+  margin: 50px;
+  padding: 50px;
 }
 
 #landingButton {
@@ -55,5 +55,6 @@ form {
 
 #root{
   height: 100%;
+  background-color: #ffc5b2;
 }
 

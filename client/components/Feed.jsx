@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, Accordion, Button } from "react-bootstrap";
+import '../public/css/styles.css';
 
 const Feed = (props) => {
   const [feedCards, setFeedCards] = useState([]);
