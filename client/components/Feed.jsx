@@ -4,7 +4,7 @@ import { FeedContext } from '../providers/FeedProvider.jsx';
 
 const Feed = () => {
   // GLOBAL STATE
-  const { isDonating } = useContext(FeedContext);
+  // const { isDonating } = useContext(FeedContext);
 
   // LOCAL STATE
   const [feedCards, setFeedCards] = useState([]);

@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
-import { FeedContext } from '../providers/FeedProvider.jsx';
+// import { FeedContext } from '../providers/FeedProvider.jsx';
+
 const Landing = () => {
   // GLOBAL STATE
-  const { setIsDonating } = useContext(FeedContext);
+  // const { IsDonatingHandler } = useContext(FeedContext);
 
   // LOCAL STATE
   const [email, setEmail] = useState('');
