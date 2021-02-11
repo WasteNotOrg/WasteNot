@@ -7,4 +7,7 @@ router.get('/', feedController.getUsers, (req, res) => {
   res.status(200).json(res.locals.users);
 });
 
+router.get('/feed', feedController.getFilteredUsers, (req, res) => {
+  res.status(200).json(res.locals.users);
+});
 module.exports = router;
