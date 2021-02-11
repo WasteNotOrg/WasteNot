@@ -3,11 +3,11 @@ const db = require('../models/model.js');
 const router = express.Router();
 const feedController = require('../controllers/feedController');
 
-router.get('/', feedController.getUsers, (req, res) => {
-  res.status(200).json(res.locals.users);
-});
+// router.post('/', feedController.getUsers, (req, res) => {
+//   res.status(200).json(res.locals.users);
+// });
 
-router.get('/feed', feedController.getFilteredUsers, (req, res) => {
+router.post('/', feedController.getFilteredUsers, (req, res) => {
   res.status(200).json(res.locals.users);
 });
 module.exports = router;

@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
-// import { FeedContext } from '../providers/FeedProvider.jsx';
+import { FeedContext } from '../providers/FeedProvider.jsx';
 
 const Landing = () => {
   // GLOBAL STATE
-  // const { IsDonatingHandler } = useContext(FeedContext);
+  const { donatorStatusHandler } = useContext(FeedContext);
 
   // LOCAL STATE
   const [email, setEmail] = useState('');
@@ -28,6 +28,7 @@ const Landing = () => {
       .then((data) => {
         console.log(data);
         if (data.isVerified) {
+          donatorStatusHandler(data.donatorStatus);
           setRedirect(true);
         }
       });
