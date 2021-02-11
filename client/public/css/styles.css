@@ -29,12 +29,16 @@ body {
   margin: auto;
 }
 
+.cstButton {
+  margin: 3px;
+  padding: 5px;
+}
 
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   position: relative;
   max-width: 600px;
   border-style: double;
@@ -44,6 +48,10 @@ form {
   padding: 30px;
 }
 
+#landingButton {
+  display: flex;
+  justify-content: space-between;
+}
 
 #root{
   height: 100%;

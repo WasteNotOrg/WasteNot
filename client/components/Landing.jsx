@@ -32,8 +32,8 @@ const Landing = () => {
   // }  
   return (
     <div id="landing">
-      <img id="logo" alt="logo" src={logo}></img>
-      <Form id ="form">
+      <img id="logo" alt="logo" src={logo} />
+      <Form id="form">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control 
@@ -55,20 +55,23 @@ const Landing = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)} />
         </Form.Group>
-        <Button 
-          variant="primary" 
-          type="button"
-          onClick={(e) => invokeLogin()} // ! this might be wrong
-        >
-          Login
-        </Button>
-        <Button 
-          variant="primary" 
-          type="button"
-          onClick={(e) => invokeSignup()} // ! this is not fully implemented
-        >
-          Signup
-        </Button>
+        <div id="landingButton">
+          <Button 
+            variant="primary" 
+            type="button"
+            onClick={(e) => invokeSignup()} // ! this is not fully implemented
+          >
+            Signup
+          </Button>
+          <Button 
+            variant="primary" 
+            type="button"
+            onClick={(e) => invokeLogin()} // ! this might be wrong
+          >
+            Login
+          </Button>
+          
+        </div>  
       </Form>
     </div>
   );
