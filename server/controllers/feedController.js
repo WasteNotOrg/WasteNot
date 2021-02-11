@@ -4,7 +4,6 @@ const feedController = {};
 
 feedController.getUsers = (req, res, next) => {
   const getQuery = 'SELECT * FROM user_info';
-
   db.query(getQuery)
     .then((users) => {
       res.locals.users = users.rows;
@@ -12,7 +11,6 @@ feedController.getUsers = (req, res, next) => {
     })
     .catch((err) => next({ error: err }));
 };
-
 
 feedController.getFilteredUsers = (req, res, next) => {
   const email = res.locals.email;
