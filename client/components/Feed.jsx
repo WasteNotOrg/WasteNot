@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Accordion, Button } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import { Card, Accordion, Button } from "react-bootstrap";
 
 const Feed = (props) => {
   const [feedCards, setFeedCards] = useState([]);
+  const [initialCallMade, setInitialCallMade] = useState(false); // TODO: Check this line later on
 
   useEffect(() => {
-    fetch('http://localhost:8080/feed')
+    setInitialCallMade(true);
+    fetch("http://localhost:8080/feed")
       .then((res) => res.json())
       .then((data) => {
         setFeedCards(data);
-        console.log('Feedcards:', feedCards);
+        console.log("Feedcards:", feedCards);
       })
-      .catch((err) => { throw new Error(err); });
-  });
+      .catch((err) => {
+        throw new Error(err);
+      });
+  }, [initialCallMade]);
 
   const renderedFeedCards = feedCards.map((card, idx) => (
-    <Card>
+    <Card key={idx}>
       <Card.Header>
         <Accordion.Toggle as={Button} variant="link" eventKey={idx}>
           {card.name}
@@ -24,9 +28,13 @@ const Feed = (props) => {
       <Accordion.Collapse eventKey={idx}>
         <Card.Body>
           {card.street_address}
+          <br />
           {card.city}
+          <br />
           {card.state}
+          <br />
           {card.zip_code}
+          <br />
           {card.phone}
         </Card.Body>
       </Accordion.Collapse>
@@ -34,9 +42,9 @@ const Feed = (props) => {
   ));
 
   return (
-    <Accordion defaultActiveKey="0">
-      {renderedFeedCards}
-    </Accordion>
+    <div id="accordionCont">
+      <Accordion defaultActiveKey="0">{renderedFeedCards}</Accordion>
+    </div>
   );
 };
 
