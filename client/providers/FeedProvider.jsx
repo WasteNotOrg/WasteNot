@@ -1,29 +1,29 @@
-// import React, { useState } from 'react';
+import React, { useState } from "react";
 
-// export const FeedContext = React.createContext();
+export const FeedContext = React.createContext();
 
-// const FeedProvider = (props) => {
-//   // STATE
+const FeedProvider = (props) => {
+  // STATE
 
-//   // Determine if logged in user is donating
-//   const [isDonating, setIsDonating] = useState(false);
+  // Keep track of email of user throughout app for coniditonal queries
+  const [donatorStatus, setDonatorStatus] = useState(false);
 
-//   // STATE HANDLERS
+  // STATE HANDLERS
 
-//   const isDonatingHandler = (donatingStatus) => {
-//     setIsDonating(donatingStatus);
-//   };
+  const donatorStatusHandler = (donatorStatus) => {
+    setDonatorStatus(donatorStatus);
+  };
 
-//   return (
-//     <FeedContext.Provider
-//       value={{
-//         isDonating,
-//         isDonatingHandler,
-//       }}
-//     >
-//       {props.children}
-//     </FeedContext.Provider>
-//   );
-// };
+  return (
+    <FeedContext.Provider
+      value={{
+        donatorStatus,
+        donatorStatusHandler,
+      }}
+    >
+      {props.children}
+    </FeedContext.Provider>
+  );
+};
 
-// export default FeedProvider;
+export default FeedProvider;

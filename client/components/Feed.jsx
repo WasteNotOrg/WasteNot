@@ -4,7 +4,7 @@ import { FeedContext } from '../providers/FeedProvider.jsx';
 
 const Feed = () => {
   // GLOBAL STATE
-  // const { isDonating } = useContext(FeedContext);
+  const { donatorStatus } = useContext(FeedContext);
 
   // LOCAL STATE
   const [feedCards, setFeedCards] = useState([]);
@@ -12,7 +12,15 @@ const Feed = () => {
 
   useEffect(() => {
     setInitialCallMade(true);
-    fetch('http://localhost:8080/feed')
+
+     const optionsObj = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({
+        donatorStatus
+      }),
+    };
+    fetch('http://localhost:8080/feed', optionsObj)
       .then((res) => res.json())
       .then((data) => {
         setFeedCards(data);
