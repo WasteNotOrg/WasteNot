@@ -1,24 +1,18 @@
-const db = require('../models/model.js');
+const db = require("../models/model.js");
 
 const landingController = {};
 
 landingController.verifyUser = (req, res, next) => {
   const { email, password } = req.body;
-  console.log("Email >>>>", email);
-  console.log("password >>>> ", password);
-  const query = `SELECT * FROM user_info WHERE email = $1 AND password = $2`
+  const query = "SELECT * FROM user_info WHERE email = $1 AND password = $2";
   db.query(query, [email, password])
-    // .then((res) => res.json())
     .then((data) => {
-      console.log("Data >>>> ", data);
-      res.locals.verifiedUser = data;
+      // If a matching account is found, return the thruthy value of one to landingRouter
+      res.locals.verifiedUser = data.rows.length;
+      res.locals.donatorStatus = data.rows[0].donator;
       return next();
     })
-    .catch((err) => {
-      console.log(err);
-      return next();
-    })
-
+    .catch((err) => next(err));
 };
 
 module.exports = landingController;

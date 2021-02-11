@@ -1,18 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { Card, Accordion, Button } from "react-bootstrap";
+import React, { useState, useEffect, useContext } from 'react';
+import { Card, Accordion, Button } from 'react-bootstrap';
+import { FeedContext } from '../providers/FeedProvider.jsx';
 import '../public/css/styles.css';
 
-const Feed = (props) => {
+
+const Feed = () => {
+  // GLOBAL STATE
+  const { donatorStatus } = useContext(FeedContext);
+
+  // LOCAL STATE
   const [feedCards, setFeedCards] = useState([]);
   const [initialCallMade, setInitialCallMade] = useState(false); // TODO: Check this line later on
 
   useEffect(() => {
     setInitialCallMade(true);
-    fetch("http://localhost:8080/feed")
+
+     const optionsObj = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({
+        donatorStatus
+      }),
+    };
+    fetch('http://localhost:8080/feed', optionsObj)
       .then((res) => res.json())
       .then((data) => {
         setFeedCards(data);
-        console.log("Feedcards:", feedCards);
+        console.log('Feedcards:', feedCards);
       })
       .catch((err) => {
         throw new Error(err);
@@ -20,7 +34,7 @@ const Feed = (props) => {
   }, [initialCallMade]);
 
   const renderedFeedCards = feedCards.map((card, idx) => (
-    <Card key={idx}>
+    <Card key={`card-${idx}`}>
       <Card.Header>
         <Accordion.Toggle as={Button} variant="link" eventKey={idx}>
           {card.name}

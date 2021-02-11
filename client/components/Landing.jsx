@@ -1,35 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import '../public/css/styles.css';
 import logo from '../public/images/logo.png';
+import { Link, Redirect } from "react-router-dom";
+import { FeedContext } from '../providers/FeedProvider.jsx';
 
 const Landing = () => {
+  // GLOBAL STATE
+  const { donatorStatusHandler } = useContext(FeedContext);
+
   // LOCAL STATE
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('')
-  const [isVerified, setIsVerified] = useState(true) // ! conditionally render error on ui?
-  // LOGIN 
-  const invokeLogin = (e) => {
-    //e.preventDefault();
+  const [password, setPassword] = useState('');
+  const [redirect, setRedirect] = useState(false);
+
+  // LOGIN
+  const invokeLogin = () => {
     const optionsObj = {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email,
-        password
-      })
-    }
+        password,
+      }),
+    };
 
     fetch('/landing', optionsObj)
       .then((res) => res.json())
-      .then((data) => { 
-        if (!data.isVerified) setIsVerified(false);
-      })
-  }  
-  // const invokeSignup= () => { // TODO
+      .then((data) => {
+        console.log(data);
+        if (data.isVerified) {
+          donatorStatusHandler(data.donatorStatus);
+          setRedirect(true);
+        }
+      });
+  };
+  // const invokeSignup = () => { // TODO
   //   return
+
   // }  
+  if (redirect) return <Redirect to="/home" />;
   return (
     <div id="landing">
       <img id="logo" alt="logo" src={logo} />
