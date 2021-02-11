@@ -13,4 +13,10 @@ feedController.getUsers = (req, res, next) => {
     .catch((err) => next({ error: err }));
 };
 
+
+feedController.getFilteredUsers = (req, res, next) => {
+  const email = res.locals.email;
+  const query = `SELECT * FROM user_info WHERE email = ${email}`;
+}
+
 module.exports = feedController;
