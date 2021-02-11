@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Card, Accordion, Button } from "react-bootstrap";
+import React, { useState, useEffect, useContext } from 'react';
+import { Card, Accordion, Button } from 'react-bootstrap';
+import { FeedContext } from '../providers/FeedProvider.jsx';
+import '../public/css/styles.css';
 import { Link } from "react-router-dom";
-import { FeedContext } from "../providers/FeedProvider.jsx";
 
 const Feed = () => {
   // GLOBAL STATE
