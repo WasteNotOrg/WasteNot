@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Card, Accordion, Button } from "react-bootstrap";
+import { FeedContext } from '../providers/FeedProvider';
 
 const Feed = (props) => {
+  // GLOBAL STATE
+  const { isDonating } = useContext(FeedContext);
+
+  // LOCAL STATE
   const [feedCards, setFeedCards] = useState([]);
   const [initialCallMade, setInitialCallMade] = useState(false); // TODO: Check this line later on
 

@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { FeedContext } from '../providers/FeedProvider';
 const Landing = () => {
+  // GLOBAL STATE
+  const { setIsDonating } = useContext(FeedContext);
+
   // LOCAL STATE
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
   const [isVerified, setIsVerified] = useState(true) // ! conditionally render error on ui?
+  
   // LOGIN 
   const invokeLogin = (e) => {
     //e.preventDefault();
