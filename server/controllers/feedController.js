@@ -4,7 +4,6 @@ const feedController = {};
 
 feedController.getUsers = (req, res, next) => {
   const getQuery = 'SELECT * FROM user_info';
-
   db.query(getQuery)
     .then((users) => {
       res.locals.users = users.rows;
