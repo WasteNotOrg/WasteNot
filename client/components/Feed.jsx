@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Card, Accordion, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+// eslint-disable-next-line import/extensions
 import { FeedContext } from '../providers/FeedProvider.jsx';
 import '../public/css/styles.css';
-import { Link } from "react-router-dom";
 
 const Feed = () => {
   // GLOBAL STATE
@@ -11,25 +12,26 @@ const Feed = () => {
   // LOCAL STATE
   const [feedCards, setFeedCards] = useState([]);
 
+  // Initially render donators or users in need based on donatorStatus
   useEffect(() => {
     const optionsObj = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         donatorStatus,
       }),
     };
-    fetch("http://localhost:8080/feed", optionsObj)
+    fetch('http://localhost:8080/feed', optionsObj)
       .then((res) => res.json())
       .then((data) => {
         setFeedCards(data);
-        console.log("Feedcards:", feedCards);
       })
       .catch((err) => {
         throw new Error(err);
       });
   }, [donatorStatus]);
 
+  // Conditionally render cards in Accordian component
   const renderedFeedCards = feedCards.map((card, idx) => (
     <Card key={`card-${idx}`}>
       <Card.Header>
@@ -56,7 +58,13 @@ const Feed = () => {
   return (
     <div id="accordionCont">
       <Accordion defaultActiveKey="0">{renderedFeedCards}</Accordion>
-      { donatorStatus ?  <Link to="/registerform"><Button className="addInventory" variant="primary">Add Inventory</Button></Link> : <div></div>}
+      {/* conditionally render add inventory button depending on user donator status */}
+      { donatorStatus ? (
+        <Link to="/registerform">
+          <Button className="addInventory" variant="primary">Add Inventory</Button>
+        </Link>
+      )
+        : null }
     </div>
   );
 };

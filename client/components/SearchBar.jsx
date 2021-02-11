@@ -3,8 +3,8 @@ import { Form, Button, FormControl } from 'react-bootstrap';
 
 const SearchBar = () => (
   <Form inline>
-    <Button type="submit">Submit</Button>
     <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
+    <Button type="button">Submit</Button>
   </Form>
 );
 

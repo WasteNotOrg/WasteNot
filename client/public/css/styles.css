@@ -1,5 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 body, html {
   height: 100%;
+
 }
 
 #landing {
@@ -8,11 +13,6 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-#accordionCont {
-  margin-top: 2rem;
-  background-color: aqua;
 }
 
 body {
