@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
-import { Form, Button } from "react-bootstrap";
+import React, { useState, useContext } from 'react';
+import { Form, Button } from 'react-bootstrap';
 import '../public/css/styles.css';
+import { Redirect } from 'react-router-dom';
 import logo from '../public/images/logo.png';
-import { Link, Redirect } from "react-router-dom";
 import { FeedContext } from '../providers/FeedProvider.jsx';
 
 const Landing = () => {
@@ -24,21 +24,20 @@ const Landing = () => {
         password,
       }),
     };
-
     fetch('/landing', optionsObj)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.isVerified) {
+          // if authentication succeeds, set user donation status in global state
           donatorStatusHandler(data.donatorStatus);
+          // if authenticaiton succeeds, redirect to home
           setRedirect(true);
         }
       });
   };
   // const invokeSignup = () => { // TODO
   //   return
-
-  // }  
+  // }
   if (redirect) return <Redirect to="/home" />;
   return (
     <div id="landing">
@@ -46,8 +45,8 @@ const Landing = () => {
       <Form id="form">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control 
-            type="email" 
+          <Form.Control
+            type="email"
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -63,25 +62,26 @@ const Landing = () => {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)} />
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </Form.Group>
         <div id="landingButton">
-          <Button 
-            variant="primary" 
+          <Button
+            variant="primary"
             type="button"
-            onClick={(e) => invokeSignup()} // ! this is not fully implemented
+            // onClick={() => invokeSignup()} // ! this is not fully implemented
           >
             Signup
           </Button>
-          <Button 
-            variant="primary" 
+          <Button
+            variant="primary"
             type="button"
-            onClick={(e) => invokeLogin()} // ! this might be wrong
+            onClick={() => invokeLogin()}
           >
             Login
           </Button>
-          
-        </div>  
+
+        </div>
       </Form>
     </div>
   );
