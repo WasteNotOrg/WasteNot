@@ -1,4 +1,60 @@
+body, html {
+  height: 100%;
+}
+
+#landing {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #accordionCont {
   margin-top: 2rem;
   background-color: aqua;
 }
+
+body {
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+#brand {
+  align-self: center;
+  font-family: Cambria;
+  margin: auto;
+}
+
+.cstButton {
+  margin: 3px;
+  padding: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  position: relative;
+  max-width: 600px;
+  border-style: double;
+  border-width: 10px;
+  border-radius: 5rem;
+  margin: 50px;
+  padding: 50px;
+}
+
+#landingButton {
+  display: flex;
+  justify-content: space-between;
+}
+
+#root{
+  height: 100%;
+  background-color: #ffc5b2;
+}
+

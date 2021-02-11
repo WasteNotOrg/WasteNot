@@ -9,7 +9,7 @@ import Home from './components/Home.jsx';
 import RegisterForm from './components/RegisterForm.jsx';
 
 const App = () => (
-  <div>
+  <>
     <Router>
       <Switch>
         <Route exact path="/">
@@ -25,7 +25,7 @@ const App = () => (
         </Route>
       </Switch>
     </Router>
-  </div>
+  </>
 );
 
 export default App;

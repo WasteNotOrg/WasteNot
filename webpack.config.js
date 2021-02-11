@@ -34,6 +34,10 @@ module.exports = {
           'css-loader',
         ],
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        use: ['file-loader'],
+      },
     ],
   },
   devServer: {
@@ -42,6 +46,6 @@ module.exports = {
       '/': 'http://localhost:3000',
     },
     contentBase: path.resolve(__dirname, 'client'),
-    historyApiFallback: true, 
+    historyApiFallback: true,
   },
 }
