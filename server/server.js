@@ -1,9 +1,13 @@
 const express = require('express');
 const path = require('path');
+const compression = require('compression');
 
 // SERVER SETUP
 const app = express();
 const PORT = 3000;
+
+// Compress all requests that pass through
+app.use(compression());
 
 // ROUTER IMPORTS
 const feedRouter = require('./routes/feedRouter');
