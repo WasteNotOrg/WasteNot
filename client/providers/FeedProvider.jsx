@@ -10,8 +10,8 @@ const FeedProvider = (props) => {
 
   // STATE HANDLERS
 
-  const donatorStatusHandler = (donatorStatus) => {
-    setDonatorStatus(donatorStatus);
+  const donatorStatusHandler = (donatorStat) => {
+    setDonatorStatus(donatorStat);
   };
 
   return (

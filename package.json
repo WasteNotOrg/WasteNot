@@ -45,6 +45,7 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.12.15",
     "bootstrap": "^4.6.0",
+    "compression": "^1.7.4",
     "concurrently": "^5.3.0",
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
